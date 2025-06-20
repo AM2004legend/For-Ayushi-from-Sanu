@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest Momo 💕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ca0c13 0%, #e96969 50%, #dd1669 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .envelope-container {
+            position: relative;
+            top: 50px;
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .envelope-container:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .envelope {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            background: linear-gradient(135deg, #ff6b9d, #eb0b0b);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+        }
+
+        .envelope:before {
+            content: "";
+            position: absolute;
+            width: 226px;
+            height: 226px;
+            background: linear-gradient(135deg, #ff6b9d, #ff8cc8);
+            transform: rotate(45deg);
+            top: -113px;
+            left: 47px;
+            border-radius: 35px 0 0 0;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
+        }
+
+        .front-flap {
+            position: absolute;
+            border-right: 190px solid #ff8cc8;
+            border-top: 105px solid transparent;
+            border-bottom: 110px solid transparent;
+            left: 130px;
+            top: 5px;
+            width: 0;
+            height: 0;
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
+
+        .front-flap:before {
+            position: absolute;
+            content: "";
+            border-left: 320px solid #ffa8cc;
+            border-top: 215px solid transparent;
+            left: -130px;
+            top: -105px;
+            width: 0;
+            height: 0;
+        }
+
+        .card {
+            position: absolute;
+            background: linear-gradient(135deg, #e7dce6, #fffffe);
+            width: 290px;
+            height: 190px;
+            top: 15px;
+            left: 15px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .card:before {
+            content: "";
+            position: absolute;
+            border: 3px solid #e4d7db;
+            border-style: dotted;
+            width: calc(100% - 24px);
+            height: calc(100% - 24px);
+            left: 12px;
+            top: 12px;
+            border-radius: 10px;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
+            font-weight: 700;
+            color: #d63384;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.1);
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: #9943be;
+            font-weight: 500;
+        }
+
+        .polaroid-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 10px 0;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.5s forwards;
+        }
+
+        .polaroid {
+            width: 60px;
+            height: 75px;
+            background: rgb(255, 253, 253);
+            border-radius: 3px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transform: rotate(-5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid:nth-child(2) {
+            transform: rotate(5deg);
+            margin-top: -10px;
+        }
+
+        .polaroid:nth-child(3) {
+            transform: rotate(-3deg);
+            margin-top: 5px;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.1);
+        }
+
+        .polaroid-image {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            margin: 4px;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .polaroid-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    }
+
+        .polaroid-caption {
+            font-size: 8px;
+            text-align: center;
+            color: #351010;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .cute-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .teddy {
+            position: absolute;
+            font-size: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .teddy:nth-child(1) {
+            top: 10px;
+            right: 10px;
+            animation-delay: 0s;
+        }
+
+        .teddy:nth-child(2) {
+            bottom: 10px;
+            left: 10px;
+            animation-delay: 1s;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: #ff6b9d;
+            font-size: 12px;
+            animation: floatHeart 3s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .floating-heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .floating-heart:nth-child(2) { left: 20%; animation-delay: 0.5s; }
+        .floating-heart:nth-child(3) { left: 30%; animation-delay: 1s; }
+        .floating-heart:nth-child(4) { left: 40%; animation-delay: 1.5s; }
+        .floating-heart:nth-child(5) { left: 50%; animation-delay: 2s; }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100px) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-50px) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .love-message {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 18px;
+            color: #b35bae;
+            margin-top: 5px;
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+
+        .shadow {
+            position: absolute;
+            width: 350px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.2);
+            top: 280px;
+            left: -15px;
+            animation: shadowScale 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes shadowScale {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(0.8); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Hover and Click States */
+        .envelope-container:hover .card {
+            top: -80px;
+            transform: scale(1.02);
+        }
+
+        .envelope-container.clicked {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 154, 158, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .envelope-container.clicked .envelope,
+        .envelope-container.clicked .front-flap,
+        .envelope-container.clicked .shadow {
+            display: none;
+        }
+
+        .envelope-container.clicked .card {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 90vw;
+            height: 85vh;
+            max-width: 800px;
+            max-height: 600px;
+            transform: scale(1);
+            z-index: 20;
+            overflow-y: auto;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .envelope-container.clicked .card-content {
+            padding: 40px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .envelope-container.clicked .card-title {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .envelope-container.clicked .card-subtitle {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .envelope-container.clicked .polaroid-container {
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .envelope-container.clicked .polaroid {
+            width: 120px;
+            height: 150px;
+        }
+
+        .envelope-container.clicked .polaroid-image {
+            width: 104px;
+            height: 104px;
+            font-size: 32px;
+        }
+
+        .envelope-container.clicked .polaroid-caption {
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .envelope-container.clicked .love-message {
+            font-size: 28px;
+            margin-top: 30px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .envelope-container.clicked .teddy {
+            font-size: 28px;
+        }
+
+        .envelope-container.clicked .teddy:nth-child(1) {
+            top: 20px;
+            right: 20px;
+        }
+
+        .envelope-container.clicked .teddy:nth-child(2) {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        /* Add a close button */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: #d63384;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 25;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+
+        .envelope-container.clicked .close-btn {
+            display: flex;
+        }
+
+        /* Content area for additional text */
+        .content-area {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 1s forwards;
+        }
+
+        .envelope-container.clicked .content-area {
+            margin-top: 30px;
+            padding: 30px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .content-text {
+            font-family: 'Poppins', sans-serif;
+            color: #8e44ad;
+            text-align: center;
+        }
+
+        /* Scrollbar styling */
+        .envelope-container.clicked .card::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .envelope-container.clicked .card::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .envelope-container.clicked .card::-webkit-scrollbar-thumb {
+            background: rgba(255, 107, 157, 0.5);
+            border-radius: 10px;
+        }
+
+        .envelope-container.clicked .card::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 107, 157, 0.7);
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 15;
+        }
+
+        .sparkle {
+            position: absolute;
+            color: #ffd700;
+            font-size: 16px;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .instruction {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #8e44ad;
+            font-weight: 500;
+            text-align: center;
+            opacity: 0.8;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="instruction">✨Smile before you click on this Baby girl!!✨</div>
+        
+        <div class="envelope-container" id="envelopeContainer">
+            <div class="envelope"></div>
+            <div class="front-flap"></div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-title">My Pagal Cutie Momo</div>
+                        <div class="card-subtitle"><i>💕With Love, cheers to three months of US together!!💕</i></div>
+                    </div>
+                    
+                    <div class="polaroid-container">
+                        <div class="polaroid">
+                            <div class="polaroid-image"><img src="/Card/photo3.jpg"></div>
+                            <div class="polaroid-caption"><b>US Drunk!!</b></div>
+                        </div>
+                        <div class="polaroid">
+                            <div class="polaroid-image"><img src="/Card/photo1.jpg"></div>
+                            <div class="polaroid-caption"><b><i>Us if we were cats!!❤️</i></b></div>
+                        </div>
+                        <div class="polaroid">
+                            <div class="polaroid-image"><img src="/Card/photo2.jpg"></div>
+                            <div class="polaroid-caption"><b>Us Sober!!</b></div>
+                        </div>
+                    </div>
+                    
+                    <div class="love-message">
+                        You make me feel complete, Ayushi. I love You sooo muchh! 💖
+                    </div>
+                    
+                    <div class="content-area">
+                        <div class="content-text">
+                            <p>I wanna be there for you cutie, always..</p>
+                            <br>
+                            <p>On a random December evening I made a </p>
+                            <p>fool out of myslef, and I am so glad I did.</p>
+                            <p>That clown face emoji..lol. But since then a lot of thingd happened and </p>
+                            <p>we made lots of memories.Going to ruby, hanging out, chatting, and me confessing</p> 
+                            <p>my Love and you rejecting.But I didnt give up.</p>
+                            <p> Then came the day when you said yes,a random 20th evening,coming</p>
+                            <p>back from Patuli with 'Pate filled with momos'. At first I didnt believe it, but then it settled in.</p>
+                            <p>I am honored to be your boyfriend Ayushi. Please continue teaching me,</p>
+                            <p>the ways to love you better, and I will try my best to be your favoutite boy. </p>
+                            <br>
+                            <p><em>PS. To my Cute little Aloo ki Bori with those cute cheeks and that enticing smile <b>I Love YOU!!!</b></em></p>
+                            <p><em>Happy 3 months of US, and many more to come.</em></p>
+                            <p><b><em>JALDI JALDI wapas ao! Apka BBG Apke Liye Pagal Ho Raha Hayy.!!!</em></b></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cute-elements">
+                    <div class="teddy">🧸</div>
+                    <div class="teddy">💕</div>
+                </div>
+                
+                <button class="close-btn" onclick="closeCard()">×</button>
+            </div>
+            
+            <div class="hearts-container">
+                <div class="floating-heart">💖</div>
+                <div class="floating-heart">💕</div>
+                <div class="floating-heart">💝</div>
+                <div class="floating-heart">❤️</div>
+                <div class="floating-heart">💗</div>
+            </div>
+            
+            <div class="sparkles" id="sparkles"></div>
+        </div>
+        
+        <div class="shadow"></div>
+    </div>
+
+    <script>
+        const envelopeContainer = document.getElementById('envelopeContainer');
+        const sparklesContainer = document.getElementById('sparkles');
+        
+        // Click functionality
+        envelopeContainer.addEventListener('click', function(e) {
+            if (!e.target.classList.contains('close-btn')) {
+                this.classList.toggle('clicked');
+                
+                // Add sparkles when clicked
+                if (this.classList.contains('clicked')) {
+                    createSparkles();
+                    // Disable body scroll when card is open
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    // Re-enable body scroll when card is closed
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+        
+        // Close card function
+        function closeCard() {
+            envelopeContainer.classList.remove('clicked');
+            document.body.style.overflow = 'auto';
+            const instruction = document.querySelector('.instruction');
+            instruction.textContent = '✨ Hover to peek, click to open! ✨';
+        }
+        
+        // Create sparkle effect
+        function createSparkles() {
+            const sparkleSymbols = ['✨', '⭐', '💫', '🌟', '✦', '✧'];
+            
+            for (let i = 0; i < 10; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.innerHTML = sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                
+                sparklesContainer.appendChild(sparkle);
+                
+                // Remove sparkle after animation
+                setTimeout(() => {
+                    if (sparkle.parentNode) {
+                        sparkle.parentNode.removeChild(sparkle);
+                    }
+                }, 2000);
+            }
+        }
+        
+        // Add some random floating elements
+        function addFloatingElements() {
+            const container = document.querySelector('.container');
+            const floatingElements = ['🌸', '🌺', '🦋', '💐', '🌹'];
+            
+            setInterval(() => {
+                const element = document.createElement('div');
+                element.innerHTML = floatingElements[Math.floor(Math.random() * floatingElements.length)];
+                element.style.position = 'absolute';
+                element.style.left = Math.random() * window.innerWidth + 'px';
+                element.style.top = window.innerHeight + 'px';
+                element.style.fontSize = '20px';
+                element.style.pointerEvents = 'none';
+                element.style.zIndex = '1';
+                element.style.animation = 'floatUp 6s ease-out forwards';
+                
+                document.body.appendChild(element);
+                
+                setTimeout(() => {
+                    if (element.parentNode) {
+                        element.parentNode.removeChild(element);
+                    }
+                }, 6000);
+            }, 3000);
+        }
+        
+        // Add floating up animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-${window.innerHeight + 100}px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Start floating elements
+        addFloatingElements();
+        
+        // Add click instruction update
+        envelopeContainer.addEventListener('click', function() {
+            const instruction = document.querySelector('.instruction');
+            if (this.classList.contains('clicked')) {
+                instruction.textContent = '✨ Click again to close! ✨';
+            } else {
+                instruction.textContent = '✨ Hover to peek, click to open! ✨';
+            }
+        });
+    </script>
+</body>
+</html>
